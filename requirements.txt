@@ -1,5 +1,5 @@
-re 
-dill 
+re==2.2.1
+dill==0.3.6
 pandas==1.5.3
 numpy==1.24.3
 sklearn==1.2.2
