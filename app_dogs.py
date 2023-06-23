@@ -28,8 +28,8 @@ with open('dog_breeds.pkl', 'rb') as f:
 with open('model_v2b.pkl', 'rb') as f:
     model = dill.load(f)
 
-st.set_page_config(page_title='Adoptable Dogs of New York', page_icon=':dog2:')
-st.header('Adoptable Dogs of New York :dog2:')
+st.set_page_config(page_title='Paws & Tales', page_icon=':dog2:')
+st.header('Paws & Tales :dog2:')
 
 name = st.text_input("Dog name", "Monsieur Chonkington")
 tags = st.multiselect("Traits", tags_list, ["affectionate", "couch potato"])
