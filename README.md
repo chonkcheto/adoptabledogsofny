@@ -1,7 +1,7 @@
 # Paws & Tales 
 
 ## Summary 
-Every day, thousands of adoptable dogs are looking for new homes. Paws & Tales helps shelters and rescues put their dogs’ best paws forward. 
+Every day, thousands of adoptable dogs are looking for new homes. Paws & Tales helps shelters and rescues put their dogs’ best paws forward. Try it here: https://pawsandtales.streamlit.app/
 
 ## Project 
 Given a dog’s characteristics and biography, the app predicts whether the dog is likely to be adopted within 30 days. While certain characteristics about a dog are unchangeable – gender, breed, size, or age – shelter or rescue staff can see whether (a) the traits they choose to highlight (e.g., “playful”, “independent”, “high energy”) and (b) the biographies they write help or hurt a dog’s chances. This information could help shelters/rescues strategize for resource allocation, marketing materials. 
