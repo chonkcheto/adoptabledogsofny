@@ -59,7 +59,29 @@ class DictEncoder(BaseEstimator, TransformerMixin):
             
         return pd.Series(new)
 
-# encodes breed.mix from yes/no to true/false 
+# turn age into age_code
+def CodeAge(age):
+    if age == "Puppy":
+        return 0
+    elif age == "Young":
+        return 1
+    elif age == "Adult":
+        return 2
+    else:
+        return 3
+
+# turn size into size_code 
+def CodeSize(size):
+    if size == "0-25":
+        return 0
+    elif size == "26-60":
+        return 1
+    elif size == "61-100":
+        return 2
+    else:
+        return 3
+        
+# to true/false # should be able to delete this chunk and the code will be OK 
 def MixEncoder(br1, br2):
     if br2 != "Mixed Breed" and (br1 == br2):
         mix = 0

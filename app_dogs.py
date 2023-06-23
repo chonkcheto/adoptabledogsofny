@@ -14,7 +14,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline 
 
 # import custom preprocessing step(s) 
-from preprocess import TagCleaner, DictEncoder, MixEncoder
+from preprocess import TagCleaner, DictEncoder, CodeAge, CodeSize
 
 # get list of tags 
 with open('traits_v2.pkl', 'rb') as f:
@@ -28,11 +28,14 @@ with open('dog_breeds.pkl', 'rb') as f:
 with open('model_v2b.pkl', 'rb') as f:
     model = dill.load(f)
 
+st.set_page_config(page_title='Adoptable Dogs of New York', page_icon=':dog2:')
 st.header('Adoptable Dogs of New York :dog2:')
 
 name = st.text_input("Dog name", "Monsieur Chonkington")
-tags = st.multiselect("Traits", tags_list, ['affectionate', 'couch potato'])
-gender = st.radio("Gender", ['Male', 'Female'])
+tags = st.multiselect("Traits", tags_list, ["affectionate", "couch potato"])
+age = st.select_slider("Age group", ["Puppy", "Young", "Adult", "Senior"], "Young")
+size = st.select_slider("Size (lbs)", ["0-25", "26-60", "61-100", "101+"], "0-25")
+gender = st.radio("Gender", ["Male", "Female"])
 breed1 = st.selectbox("Primary breed", breeds_list, index=191)
 breed2 = st.selectbox("Secondary breed", breeds_list, index=130)
 
@@ -40,13 +43,14 @@ text = st.text_area("Tell your dog's story", "Monsieur Chonkington is looking fo
                     max_chars=1000, height=250)
 
 def classify(): 
-    # encode mixed status to Yes/No
-    mix = MixEncoder(breed1, breed2)
+    # encode age, size 
+    age_code = CodeAge(age)
+    size_code = CodeSize(size)
     
     # make dataframe from inputs 
-    X = pd.DataFrame({'name': name, 'tags': [tags], 'gender':gender,  
-                      'breed.1': breed1, 'breed.2': breed2, 
-                      'breed.mix': mix, 'text': text})
+    X = pd.DataFrame({'age_code': age_code, 'size_code': size_code, 
+                      'gender':gender, 'breed.1': breed1, 'breed.2': breed2, 
+                      'tags': [tags],  'text': text})
 
     # predict based 
     prediction = model.predict(X) 
