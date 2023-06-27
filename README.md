@@ -19,11 +19,14 @@ Among 226 dog breeds present in the dataset, 17 breeds account for 56% of adopta
 
 <img src="vis1_breeds_a.png" alt="word cloud of dog breeds, top 5: Mixed Breed, Labrador Retriever, Pit Bull Terrier, Terrier, Hound" width="300"/>
 
-### Model 
+### Machine Learning 
 Used scikit-learn library to build a model consisting of two steps: (1) process and extract features from data and (2) train a random forest classifier. Traits data were transformed with DictVectorizer and text data were transformed with TfidfVectorizer. Hyperparameters for TF-IDF and random forest were optimized using GridSearchCV. The model used in the app has 71% accuracy , 68% precision, and 75% recall on test data. Stepwise details on building the model are in the Jupyter notebook `model_final.ipynb` in the GitHub repo. 
 
 ## Future directions 
 Ideas for improving the model and/or building a new, more granular classification model 
 * use word embeddings as features for classifier 
 * scikit-survival for time-to-event analysis and prediction 
-* SHAP for more granular explanations 
+* SHAP for better model explainability 
+
+## Libraries and tools 
+NumPy, pandas, matplotlib, seaborn, NLTK, scikit-learn, natural language processing (NLP), machine learning, random forest classification
